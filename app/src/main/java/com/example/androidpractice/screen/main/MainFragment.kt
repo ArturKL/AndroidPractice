@@ -22,7 +22,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private var rvAdapter: MainAdapter? = null
 
-    private var itemList: List<ArticleModel>? = null
+    private var itemList: MutableList<ArticleModel>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,11 +34,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         if (rvAdapter == null) {
             if (itemList == null) {
                 itemList = ContentRepository.getArticleList(Random.nextInt(10, 30))
+                    .toMutableList()
             }
             rvAdapter = MainAdapter(
                 dataList = itemList ?: emptyList(),
                 requestManager = Glide.with(this),
-                onItemClickAdapter = ::onItemClick
+                onItemClickAdapter = ::onItemClick,
+                onImageClickAdapter = ::onImageClick
             )
         }
         val layoutManger = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -53,6 +55,21 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val data = bundleOf(Keys.ARTICLE_KEY to item)
 
         findNavController().navigate(R.id.action_mainFragment_to_detailsFragment, data)
+    }
+
+    private fun onImageClick(position: Int) {
+        itemList?.apply {
+            val oldItem = get(position)
+            val newItem = ArticleModel(
+                imgUrl = ContentRepository.getPictureList().random(),
+                title = oldItem.title,
+                description = oldItem.description
+            )
+            this[position] = newItem
+            rvAdapter?.apply {
+                notifyItemChanged(position)
+            }
+        }
     }
 
     override fun onDestroyView() {

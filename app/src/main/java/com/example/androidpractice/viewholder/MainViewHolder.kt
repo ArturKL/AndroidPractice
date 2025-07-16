@@ -8,7 +8,8 @@ import com.example.androidpractice.model.ArticleModel
 class MainViewHolder(
     private val viewBinding: ItemMainBinding,
     private val requestManager: RequestManager,
-    private val onItemClickViewHolder: (Int) -> Unit
+    private val onItemClickViewHolder: (Int) -> Unit,
+    private val onImageClickViewHolder: (Int) -> Unit
 ) : RecyclerView.ViewHolder(viewBinding.root) {
 
     fun bindData(item: ArticleModel, itemPosition: Int) {
@@ -19,6 +20,10 @@ class MainViewHolder(
 
             root.setOnClickListener {
                 onItemClickViewHolder.invoke(itemPosition)
+            }
+
+            articleIv.setOnClickListener {
+                onImageClickViewHolder.invoke(itemPosition)
             }
         }
     }
