@@ -23,4 +23,12 @@
         android:text="@string/random_btn_text"
         app:layout_constraintTop_toBottomOf="@id/random_iv"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next_page_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/next_page_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

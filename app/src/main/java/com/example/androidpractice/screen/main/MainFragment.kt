@@ -3,6 +3,7 @@ package com.example.androidpractice.screen.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.androidpractice.R
 import com.example.androidpractice.databinding.FragmentMainBinding
@@ -30,11 +31,16 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                         .into(img)
                 }
             }
+
+            nextPageBtn.setOnClickListener {
+                findNavController()
+                    .navigate(R.id.action_mainFragment_to_loginFragment)
+            }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         viewBinding = null
     }
 }
