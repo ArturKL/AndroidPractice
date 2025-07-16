@@ -3,4 +3,7 @@
     <string name="random_btn_text">Pick Random Image</string>
     <string name="random_iv_description">Random image of a cat</string>
     <string name="next_page_btn_text">Next Page</string>
+    <string name="login_btn_text">Log In</string>
+    <string name="password_tv_text">Password:</string>
+    <string name="email_tv_text">Email:</string>
 </resources>
