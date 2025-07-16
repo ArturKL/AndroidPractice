@@ -6,10 +6,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.main.MainFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/random_iv"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:contentDescription="@string/random_iv_description"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/purple_200"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/random_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hellow"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_margin="16dp"
+        android:text="@string/random_btn_text"
+        app:layout_constraintTop_toBottomOf="@id/random_iv"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidPractice</string>
+    <string name="random_btn_text">Pick Random Image</string>
+    <string name="random_iv_description">Random image of a cat</string>
 </resources>
